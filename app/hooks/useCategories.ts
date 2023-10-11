@@ -9,6 +9,19 @@ import {
   FaMusic,
 } from "react-icons/fa";
 
+export interface Category {
+  name: string;
+  href: string;
+  icon: any;
+  colors: {
+    bg: string;
+    bgHover: string;
+    icon: string;
+    colorText: string;
+  };
+  subCategories: string[];
+}
+
 const useCategories = () => {
   const categories = [
     {
@@ -19,7 +32,9 @@ const useCategories = () => {
         bg: "bg-lime-500",
         bgHover: "group-hover:bg-lime-600",
         icon: "text-lime-100",
+        colorText: "text-lime-500",
       },
+      subCategories: [],
     },
     {
       name: "Electronics",
@@ -29,7 +44,9 @@ const useCategories = () => {
         bg: "bg-yellow-600",
         bgHover: "group-hover:bg-yellow-600",
         icon: "text-yellow-200",
+        colorText: "text-yellow-600",
       },
+      subCategories: [],
     },
     {
       name: "Collectibles and Art",
@@ -39,7 +56,9 @@ const useCategories = () => {
         bg: "bg-orange-500",
         bgHover: "group-hover:bg-orange-600",
         icon: "text-orange-200",
+        colorText: "text-orange-500",
       },
+      subCategories: [],
     },
     {
       name: "Fashion",
@@ -49,7 +68,9 @@ const useCategories = () => {
         bg: "bg-green-500",
         bgHover: "group-hover:bg-green-600",
         icon: "text-green-200",
+        colorText: "text-green-500",
       },
+      subCategories: [],
     },
     {
       name: "Automotive",
@@ -59,7 +80,9 @@ const useCategories = () => {
         bg: "bg-indigo-500",
         bgHover: "group-hover:bg-indigo-600",
         icon: "text-indigo-100",
+        colorText: "text-indigo-500",
       },
+      subCategories: [],
     },
     {
       name: "Sports and Hobbies",
@@ -69,7 +92,9 @@ const useCategories = () => {
         bg: "bg-blue-500",
         bgHover: "group-hover:bg-blue-600",
         icon: "text-blue-200",
+        colorText: "text-blue-500",
       },
+      subCategories: [],
     },
     {
       name: "Health and Beauty",
@@ -79,7 +104,9 @@ const useCategories = () => {
         bg: "bg-yellow-500",
         bgHover: "group-hover:bg-yellow-600",
         icon: "text-yellow-200",
+        colorText: "text-yellow-500",
       },
+      subCategories: [],
     },
     {
       name: "Music and Education",
@@ -89,7 +116,9 @@ const useCategories = () => {
         bg: "bg-purple-500",
         bgHover: "group-hover:bg-purple-600",
         icon: "text-purple-200",
+        colorText: "text-purple-500",
       },
+      subCategories: [],
     },
   ];
 
