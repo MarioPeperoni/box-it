@@ -10,7 +10,8 @@ interface InputProps {
   placeholder?: string;
   required?: boolean;
   as?: "input" | "textarea";
-  size?: "sm" | "md" | "lg";
+  size?: any;
+  disabled?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -23,6 +24,7 @@ const Input: React.FC<InputProps> = ({
   required = true,
   as = "input",
   size = "md",
+  disabled,
 }) => {
   return (
     <div className="flex flex-col">
@@ -39,13 +41,16 @@ const Input: React.FC<InputProps> = ({
         type={type}
         required={required}
         placeholder={placeholder ? placeholder : ""}
+        disabled={disabled}
         className={twMerge(
-          "h-14 rounded-md border-b-2 border-gray-100 bg-gray-100 p-4 font-light outline-none transition-all focus:border-boxit-primary lg:w-[60%]",
+          "h-14 rounded-md border-b-2 border-gray-100 bg-gray-100 p-4 font-light outline-none transition-all focus:border-boxit-primary",
           touched && errors && "border-red-500 focus:border-red-500",
           size === "sm" && "lg:w-[10%]",
           size === "md" && "lg:w-[20%]",
           size === "lg" && "lg:w-[60%]",
+          size === "full" && "lg:w-full",
           as === "textarea" && "h-64",
+          disabled && "text-gray-500",
         )}
       />
       <ErrorMessage

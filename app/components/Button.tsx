@@ -1,18 +1,28 @@
+import { twMerge } from "tailwind-merge";
+
 interface ButtonProps {
   children: React.ReactNode;
   type: any;
   primary?: boolean;
+  disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, type, primary }) => {
+const Button: React.FC<ButtonProps> = ({
+  children,
+  type,
+  primary,
+  disabled,
+}) => {
   return (
     <button
       type={type}
-      className={
+      disabled={disabled}
+      className={twMerge(
         primary
-          ? "bg-boxit-primary hover:border-boxit-primary rounded-sm border-4 border-white px-5 py-3 font-bold transition-all duration-300 hover:border-8 hover:bg-white hover:px-4 hover:py-2"
-          : "hover:border-boxit-primary border-b-2 border-white font-semibold transition"
-      }
+          ? "rounded-sm border-4 border-white bg-boxit-primary px-5 py-3 font-bold transition-all duration-300 enabled:hover:border-8 enabled:hover:border-boxit-primary enabled:hover:bg-white enabled:hover:px-4 enabled:hover:py-2"
+          : "border-b-2 border-white font-semibold transition hover:border-boxit-primary",
+        disabled && "bg-gray-300",
+      )}
     >
       {children}
     </button>
