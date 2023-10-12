@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  username String
+  email    String  @unique
+  password String
+  phone    String?
+  role     String  @default("USER")
+  avatar   String?
+  bio      String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  billingAdress BillingAddress?
+
+  ProductListings ProductListing[]
+  ProductsBought  ProductListing[] @relation("Bought")
+
+  Cart Cart?
+}
+
+model BillingAddress {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  firstName String
+  lastName  String
+  address   String
+  city      String
+  state     String
+  zip       String
+  country   String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId String @unique @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+model ProductListing {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  category      String
+  photos        String[]
+  description   String
+  condition     String
+  itemPrice     Float
+  shippingPrice Float
+
+  status String
+  views  Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id])
+
+  boughtById String? @db.ObjectId
+  boughtBy   User?   @relation("Bought", fields: [boughtById], references: [id])
+
+  Cart   Cart?   @relation(fields: [cartId], references: [id])
+  cartId String? @db.ObjectId
+}
+
+model Cart {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  updatedAt DateTime @updatedAt
+
+  userId String @unique @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id])
+
+  items ProductListing[]
+}

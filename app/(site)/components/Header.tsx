@@ -16,7 +16,7 @@ const Header = () => {
         <div className=" flex gap-12">
           <div className="flex gap-5">
             <LinkWithIcon href="/loved" icon={FiHeart} text="" />
-            <LinkWithIcon href="/login" icon={FiUser} text="Your account" />
+            <LinkWithIcon href="/profile" icon={FiUser} text="Your account" />
           </div>
           <CreateNewButton />
         </div>

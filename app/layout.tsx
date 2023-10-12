@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 
 import Footer from "./(site)/components/Footer";
 import Header from "./(site)/components/Header";
+
 import "./globals.css";
+
+import { Toaster } from "react-hot-toast";
+import AuthContext from "./context/AuthContext";
 
 export const metadata: Metadata = {
   title: "Box It!",
@@ -17,9 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="pt-16">
-        <Header />
-        {children}
-        <Footer />
+        <AuthContext>
+          <Toaster />
+          <Header />
+          {children}
+          <Footer />
+        </AuthContext>
       </body>
     </html>
   );
