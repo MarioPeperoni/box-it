@@ -7,7 +7,8 @@ import { twMerge } from "tailwind-merge";
 
 import Button from "../components/Button";
 import PhotoGrid from "./components/PhotoGrid";
-import Dropdown from "./components/Dropdown";
+import Dropdown from "../components/form/Dropdown";
+import Input from "../components/form/Input";
 import CategoriesDropdown from "./components/CategoriesDropdown";
 
 const AddListing = () => {
@@ -19,8 +20,14 @@ const AddListing = () => {
     title: yup.string().min(10).max(50).required("Title is required"),
     description: yup.string().min(30).required("Description is required"),
     images: yup.array().min(1).required("At least one image is required"),
-    price: yup.number().required("Price is required"),
-    shippingPrice: yup.number().required("Shipping price is required"),
+    price: yup
+      .number()
+      .required("Price is required")
+      .typeError("Price must be a number"),
+    shippingPrice: yup
+      .number()
+      .required("Shipping price is required")
+      .typeError("Shipping price must be a number"),
     condition: yup.string().required("Condition is required"),
     category: yup.string().required("Category is required"),
   });
@@ -46,28 +53,15 @@ const AddListing = () => {
           </h1>
           <div className="flex flex-col gap-5 bg-white p-5">
             <h2 className="text-xl font-semibold">Basic information</h2>
-            <div className="flex flex-col">
-              <label htmlFor="title" className="text-sm font-light">
-                Listing title*
-              </label>
-              <Field
-                id="title"
-                name="title"
-                placeholder="ex. Brand new iPhone 11"
-                className={twMerge(
-                  "h-14 rounded-md border-b-2 border-gray-100 bg-gray-100 p-4 font-light outline-none transition-all focus:border-boxit-primary lg:w-[60%]",
-                  touched.title &&
-                    errors.title &&
-                    "border-red-500 focus:border-red-500",
-                )}
-                required
-              />
-              <ErrorMessage
-                name="title"
-                component="div"
-                className="text-sm text-red-500"
-              />
-            </div>
+            <Input
+              name="title"
+              label="Listing title*"
+              placeholder="ex. Brand new iPhone 11"
+              size="lg"
+              required
+              errors={errors.title}
+              touched={touched.title}
+            />
             <div className="flex flex-col">
               <label htmlFor="title" className="text-sm font-light">
                 Category*
@@ -99,29 +93,15 @@ const AddListing = () => {
           </div>
           <div className="bg-white p-5">
             <h2 className="text-xl font-semibold">Description</h2>
-            <div className="flex flex-col">
-              <label htmlFor="description" className="sr-only">
-                Description of your listing
-              </label>
-              <Field
-                as="textarea"
-                id="description"
-                name="description"
-                required
-                placeholder="Write a description of your listing"
-                className={twMerge(
-                  "h-64 rounded-md border-b-2 border-gray-100 bg-gray-100 p-4 font-light outline-none transition-all focus:border-boxit-primary lg:w-[60%]",
-                  touched.description &&
-                    errors.description &&
-                    "border-red-500 focus:border-red-500",
-                )}
-              />
-              <ErrorMessage
-                name="description"
-                component="div"
-                className="text-sm text-red-500"
-              />
-            </div>
+            <Input
+              as="textarea"
+              name="description"
+              placeholder="Write a description of your listing"
+              size="lg"
+              required
+              errors={errors.description}
+              touched={touched.description}
+            />
           </div>
           <div className="flex flex-col gap-5 bg-white p-5">
             <h2 className="text-xl font-semibold">Price and condition</h2>
