@@ -20,21 +20,19 @@ const Login = () => {
   useEffect(() => {
     if (session.status === "authenticated") {
       router.push(searchParams.get("callbackUrl") || "/");
+      router.refresh();
     }
   }, [session.status]);
   return (
-    console.log(searchParams.get("callbackUrl")),
-    (
-      <div className="items-cen flex h-full w-full items-center justify-center bg-orange-100">
-        <div className="w-[90%] items-center justify-center bg-white p-10 lg:h-auto lg:w-[600px]">
-          {variant === "login" ? (
-            <LoginForm changeVariant={() => setVariant("register")} />
-          ) : (
-            <RegisterForm changeVariant={() => setVariant("login")} />
-          )}
-        </div>
+    <div className="items-cen flex h-full w-full items-center justify-center bg-orange-100">
+      <div className="w-[90%] items-center justify-center bg-white p-10 lg:h-auto lg:w-[600px]">
+        {variant === "login" ? (
+          <LoginForm changeVariant={() => setVariant("register")} />
+        ) : (
+          <RegisterForm changeVariant={() => setVariant("login")} />
+        )}
       </div>
-    )
+    </div>
   );
 };
 

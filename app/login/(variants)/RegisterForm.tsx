@@ -25,6 +25,7 @@ const RegisterForm: React.FC<LoginFormProps> = ({ changeVariant }) => {
     username: yup
       .string()
       .min(4, "Username must be at least 4 characters long ")
+      .max(32, "Username must be at most 32 characters long")
       .required("Username is required"),
     password: yup
       .string()

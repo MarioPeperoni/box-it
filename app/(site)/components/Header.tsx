@@ -3,10 +3,15 @@ import Link from "next/link";
 
 import LinkWithIcon from "@/app/components/header/LinkWithIcon";
 import CreateNewButton from "@/app/components/header/CreateNewButton";
+import ProfileButton from "@/app/components/header/ProfileButton";
 
-import { FiHeart, FiUser } from "react-icons/fi";
+import getUser from "@/app/helpers/getUser";
 
-const Header = () => {
+import { FiHeart } from "react-icons/fi";
+
+const Header = async () => {
+  const user = await getUser();
+
   return (
     <header className="fixed top-0 w-full">
       <div className="flex items-center justify-around bg-neutral-50 py-2 shadow-md">
@@ -16,7 +21,7 @@ const Header = () => {
         <div className="flex items-center gap-3 md:gap-12">
           <div className="flex gap-5">
             <LinkWithIcon href="/loved" icon={FiHeart} text="" />
-            <LinkWithIcon href="/profile" icon={FiUser} text="Your account" />
+            <ProfileButton user={user} />
           </div>
           <CreateNewButton />
         </div>
