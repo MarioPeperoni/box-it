@@ -3,7 +3,7 @@ const RecentItems = () => {
     <section className="flex flex-col items-center justify-center bg-white p-10">
       <h1 className="text-3xl font-bold">Recent Listings</h1>
       <div className="p-10 pt-5">
-        <p>asiodmao</p>
+        <p>There are no active listings avalable</p>
       </div>
     </section>
   );

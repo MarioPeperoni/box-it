@@ -12,7 +12,7 @@ const SearchBox = () => {
     <Formik initialValues={{ searchQuery: "" }} onSubmit={handleSubmit}>
       <Form>
         <div className="bg-orange-100 p-10 pb-4">
-          <div className=" flex w-full items-center justify-center px-10">
+          <div className=" flex w-full items-center justify-center ">
             <div className="flex h-16 max-w-2xl flex-1 items-center bg-white p-5 shadow-sm">
               <HiMagnifyingGlass size={24} />
               <Field
@@ -27,7 +27,7 @@ const SearchBox = () => {
               type="submit"
               className="flex h-16 items-center justify-center gap-2 border-l-[1px] bg-white p-5 shadow-sm transition hover:bg-orange-300"
             >
-              <span className="font-semibold">Search</span>
+              <span className="hidden font-semibold md:flex">Search</span>
               <HiMagnifyingGlass size={24} />
             </button>
           </div>

@@ -1,15 +1,16 @@
 import Link from "next/link";
 
+import { PiPlusBold } from "react-icons/pi";
+
 const CreateNewButton = () => {
   return (
-    <div className="create-new-button">
-      <Link
-        href={"/add-listing"}
-        className="bg-boxit-primary hover:border-boxit-primary rounded-sm border-4 border-white px-5 py-3 font-bold transition-all duration-300 hover:border-8 hover:bg-white hover:px-4 hover:py-2"
-      >
-        Add new listing
-      </Link>
-    </div>
+    <Link
+      href={"/add-listing"}
+      className="group rounded-full border-4 border-white bg-boxit-primary px-5 py-3 font-bold transition-all duration-300 hover:border-8 hover:border-boxit-primary hover:bg-white hover:px-4 hover:py-2 md:rounded-sm"
+    >
+      <PiPlusBold size={24} className="block md:hidden" />
+      <span className="hidden md:block">Add new listing</span>
+    </Link>
   );
 };
 
