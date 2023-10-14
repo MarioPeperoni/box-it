@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col items-center justify-center p-10">
+    <footer className="flex flex-col items-center justify-center bg-orange-100 p-10">
       <Image alt="Box It Logo" src={"/boxIt.svg"} width={128} height={128} />
       <p className="pt-5 text-center text-sm font-light lg:px-64">
         Box It is your go-to destination for listing items you want to sell and

@@ -16,16 +16,10 @@ const CategoriesItem: React.FC<CategoriesItemProps> = ({
   return (
     <Link href={href}>
       <div
-        className={`hover:shadow-boxit-primary group flex w-52 cursor-pointer flex-col items-center justify-center rounded-2xl border-2 p-4 transition hover:bg-neutral-50 hover:shadow-md `}
+        className={`center group flex w-[250px] cursor-pointer items-center justify-center gap-2 border-[1px] bg-white py-2 transition-all hover:bg-neutral-50 hover:shadow-md md:w-[300px] md:py-3`}
       >
-        <div
-          className={`group flex h-20 w-20 items-center justify-center rounded-3xl ${colors.bg} transition ${colors.bgHover} group-hover:w-50 group-hover:h-50 group-hover:scale-105`}
-        >
-          <Icon size={48} className={`${colors.icon}`} />
-        </div>
-        <p className="pt-4 text-center font-semibold text-neutral-800">
-          {name}
-        </p>
+        <Icon className={`${colors.colorText} h-6 w-6 md:h-8 md:w-8`} />
+        <span className="font-semibold text-neutral-800">{name}</span>
       </div>
     </Link>
   );
