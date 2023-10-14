@@ -58,17 +58,17 @@ model ProductListing {
   itemPrice     Float
   shippingPrice Float
 
-  status String
-  views  Int
+  status String @default("active")
+  views  Int    @default(0)
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 
-  userId String @db.ObjectId
-  user   User   @relation(fields: [userId], references: [id])
+  sellerId String @db.ObjectId
+  seller   User   @relation(fields: [sellerId], references: [id])
 
-  boughtById String? @db.ObjectId
-  boughtBy   User?   @relation("Bought", fields: [boughtById], references: [id])
+  boughtById String?   @db.ObjectId
+  boughtBy   User?     @relation("Bought", fields: [boughtById], references: [id])
+  boughtAt   DateTime?
 
   Cart   Cart?   @relation(fields: [cartId], references: [id])
   cartId String? @db.ObjectId

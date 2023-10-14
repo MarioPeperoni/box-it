@@ -5,6 +5,9 @@ import * as yup from "yup";
 
 import { twMerge } from "tailwind-merge";
 
+import axios from "axios";
+import { useRouter } from "next/navigation";
+
 import Button from "../components/Button";
 import PhotoGrid from "./components/PhotoGrid";
 import Dropdown from "../components/form/Dropdown";
@@ -12,15 +15,22 @@ import Input from "../components/form/Input";
 import CategoriesDropdown from "./components/CategoriesDropdown";
 
 const AddListing = () => {
+  const router = useRouter();
+
   const handleSubmit = (values: any) => {
-    console.log(values);
+    axios
+      .post("/api/add-listing", values)
+      .then(() => router.push("/add-listing/success"))
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
   const validationSchema = yup.object().shape({
     title: yup.string().min(10).max(50).required("Title is required"),
     description: yup.string().min(30).required("Description is required"),
     images: yup.array().min(1).required("At least one image is required"),
-    price: yup
+    itemPrice: yup
       .number()
       .required("Price is required")
       .typeError("Price must be a number"),
@@ -38,7 +48,7 @@ const AddListing = () => {
         title: "",
         description: "",
         images: [],
-        price: "",
+        itemPrice: "",
         shippingPrice: "",
         condition: "",
         category: "",
@@ -125,19 +135,19 @@ const AddListing = () => {
               </div>
             </div>
             <div className="flex flex-col">
-              <label htmlFor="price" className="text-sm font-light">
+              <label htmlFor="itemPrice" className="text-sm font-light">
                 Item price
               </label>
               <div className="flex gap-1">
                 <Field
-                  id="price"
-                  name="price"
+                  id="itemPrice"
+                  name="itemPrice"
                   required
                   placeholder="Item price"
                   className={twMerge(
                     "h-14 w-full rounded-md border-b-2 border-gray-100 bg-gray-100 p-4 font-light outline-none transition-all focus:border-boxit-primary lg:w-[20%]",
-                    touched.price &&
-                      errors.price &&
+                    touched.itemPrice &&
+                      errors.itemPrice &&
                       "border-red-500 focus:border-red-500",
                   )}
                 />
