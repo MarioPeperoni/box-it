@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     const {
       title,
       category,
-      photos,
+      images,
       description,
       condition,
       itemPrice,
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
       data: {
         title,
         category,
-        photos,
+        images,
         description,
         condition,
         itemPrice: parsedItemPrice,
