@@ -44,7 +44,7 @@ const ListingDisplay: React.FC<ListingDisplayProps> = ({
             ))}
           </div>
         ) : (
-          <div className="flex flex-row">
+          <div className="flex flex-col gap-2">
             {listings.map((listing) => (
               <ListCard key={listing.id} listing={listing} />
             ))}
