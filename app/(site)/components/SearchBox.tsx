@@ -25,7 +25,7 @@ const SearchBox = () => {
             </div>
             <button
               type="submit"
-              className="flex h-16 items-center justify-center gap-2 border-l-[1px] bg-white p-5 shadow-sm transition hover:bg-orange-300"
+              className="flex h-16 items-center justify-center gap-2 border-l-[1px] bg-white p-5 shadow-sm transition hover:bg-boxit-primary"
             >
               <span className="hidden font-semibold md:flex">Search</span>
               <HiMagnifyingGlass size={24} />

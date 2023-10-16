@@ -13,7 +13,7 @@ const Header = async () => {
   const user = await getUser();
 
   return (
-    <header className="fixed top-0 w-full">
+    <header className="fixed top-0 z-50 w-full">
       <div className="flex items-center justify-around bg-neutral-50 py-2 shadow-md">
         <Link href="/">
           <Image src={"/boxIt.svg"} alt="logo" height={128} width={128} />
