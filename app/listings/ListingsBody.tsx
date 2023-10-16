@@ -12,30 +12,33 @@ import SortAndAlignToggle from "./components/SortAndAlignToggle";
 import ListingDisplay from "./components/ListingDisplay";
 import PageButtons from "./components/PageButtons";
 
-interface filter {
-  price: {
-    min: number;
-    max: number;
-  };
-  category: string;
-  condition: string;
-}
+import Filters from "@/types/Filter";
 
 interface ListingsPageProps {
   listings: ProductListing[];
   listingsNumber: number;
+  initialFilters: Filters;
+  initialPage: number;
+  initialSort: "newest" | "priceasc" | "pricedesc";
+  initialDisplayMode: "grid" | "list";
 }
 
 const ListingsBody: React.FC<ListingsPageProps> = ({
   listings,
   listingsNumber,
+  initialFilters,
+  initialPage,
+  initialSort,
+  initialDisplayMode,
 }) => {
-  const [filters, setFilters] = useState<filter>();
-  const [page, setPage] = useState<number>(1);
+  const [filters, setFilters] = useState<Filters>(initialFilters || {});
+  const [page, setPage] = useState<number>(initialPage || 1);
   const [sort, setSort] = useState<"newest" | "priceasc" | "pricedesc">(
-    "newest",
+    initialSort || "newest",
   );
-  const [displayMode, setDisplayMode] = useState<"grid" | "list">("grid");
+  const [displayMode, setDisplayMode] = useState<"grid" | "list">(
+    initialDisplayMode || "grid",
+  );
 
   const router = useRouter();
 
@@ -44,11 +47,12 @@ const ListingsBody: React.FC<ListingsPageProps> = ({
       filters: JSON.stringify(filters),
       page,
       sort,
+      displayMode,
     };
     const url = qs.stringifyUrl({ url: "/listings", query });
 
     router.push(url);
-  }, [filters, page, sort]);
+  }, [filters, page, sort, displayMode]);
 
   return (
     <section className="bg-neutral-100 px-[8%] py-5">

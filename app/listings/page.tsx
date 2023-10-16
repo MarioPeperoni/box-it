@@ -4,10 +4,14 @@ import getListingsNumber from "../helpers/getListingsNumber";
 import SearchBox from "../(site)/components/SearchBox";
 import ListingsBody from "./ListingsBody";
 
+import Filters from "@/types/Filter";
+
 interface ListingsPageParams {
   searchParams: {
     page: string;
-    sort: string;
+    sort: "priceasc" | "pricedesc" | "newest";
+    filters: Filters;
+    displayMode: "grid" | "list";
   };
 }
 
@@ -18,7 +22,14 @@ const ListingsPage = async ({ searchParams }: ListingsPageParams) => {
   return (
     <>
       <SearchBox />
-      <ListingsBody listings={listings} listingsNumber={listingsNumber} />
+      <ListingsBody
+        listings={listings}
+        listingsNumber={listingsNumber}
+        initialDisplayMode={searchParams.displayMode}
+        initialFilters={searchParams.filters}
+        initialPage={parseInt(searchParams.page)}
+        initialSort={searchParams.sort}
+      />
     </>
   );
 };
