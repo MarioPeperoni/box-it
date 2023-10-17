@@ -21,6 +21,7 @@ interface ListingsPageProps {
   initialPage: number;
   initialSort: "newest" | "priceasc" | "pricedesc";
   initialDisplayMode: "grid" | "list";
+  initialSearch: string;
 }
 
 const ListingsBody: React.FC<ListingsPageProps> = ({
@@ -30,6 +31,7 @@ const ListingsBody: React.FC<ListingsPageProps> = ({
   initialPage,
   initialSort,
   initialDisplayMode,
+  initialSearch,
 }) => {
   const [filters, setFilters] = useState<Filters>(initialFilters || {});
   const [page, setPage] = useState<number>(initialPage || 1);
@@ -39,6 +41,7 @@ const ListingsBody: React.FC<ListingsPageProps> = ({
   const [displayMode, setDisplayMode] = useState<"grid" | "list">(
     initialDisplayMode || "grid",
   );
+  const [search, setSearch] = useState<string>(initialSearch || "");
 
   const router = useRouter();
 
@@ -48,11 +51,12 @@ const ListingsBody: React.FC<ListingsPageProps> = ({
       page,
       sort,
       displayMode,
+      search,
     };
     const url = qs.stringifyUrl({ url: "/listings", query });
 
     router.push(url);
-  }, [filters, page, sort, displayMode]);
+  }, [filters, page, sort, displayMode, search]);
 
   return (
     <section className="bg-neutral-100 px-[8%] py-5">
@@ -67,7 +71,11 @@ const ListingsBody: React.FC<ListingsPageProps> = ({
       <ListingDisplay
         listings={listings}
         mode={displayMode}
-        title={`We have found ${listingsNumber} listings for you`}
+        title={
+          listingsNumber == 1
+            ? `We have found ${listingsNumber} listing for you`
+            : `We have found ${listingsNumber} listings for you`
+        }
       />
       <PageButtons
         page={page}

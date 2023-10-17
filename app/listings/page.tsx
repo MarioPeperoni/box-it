@@ -12,6 +12,7 @@ interface ListingsPageParams {
     sort: "priceasc" | "pricedesc" | "newest";
     filters: Filters;
     displayMode: "grid" | "list";
+    search: string;
   };
 }
 
@@ -29,6 +30,7 @@ const ListingsPage = async ({ searchParams }: ListingsPageParams) => {
         initialFilters={searchParams.filters}
         initialPage={parseInt(searchParams.page)}
         initialSort={searchParams.sort}
+        initialSearch={searchParams.search}
       />
     </>
   );
