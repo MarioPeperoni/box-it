@@ -21,6 +21,7 @@ interface ListingsPageProps {
   initialPage: number;
   initialSort: "newest" | "priceasc" | "pricedesc";
   initialDisplayMode: "grid" | "list";
+  initialCategory: string;
   initialSearch: string;
 }
 
@@ -31,6 +32,7 @@ const ListingsBody: React.FC<ListingsPageProps> = ({
   initialPage,
   initialSort,
   initialDisplayMode,
+  initialCategory,
   initialSearch,
 }) => {
   const [filters, setFilters] = useState<Filters>(initialFilters || {});
@@ -41,6 +43,7 @@ const ListingsBody: React.FC<ListingsPageProps> = ({
   const [displayMode, setDisplayMode] = useState<"grid" | "list">(
     initialDisplayMode || "grid",
   );
+  const [category, setCategory] = useState<string>(initialCategory || "");
   const [search, setSearch] = useState<string>(initialSearch || "");
 
   const router = useRouter();
@@ -51,6 +54,7 @@ const ListingsBody: React.FC<ListingsPageProps> = ({
       page,
       sort,
       displayMode,
+      category,
       search,
     };
     const url = qs.stringifyUrl({ url: "/listings", query });
@@ -59,9 +63,9 @@ const ListingsBody: React.FC<ListingsPageProps> = ({
   }, [filters, page, sort, displayMode, search]);
 
   return (
-    <section className="bg-neutral-100 px-[8%] py-5">
-      {/* <FiltersMenu />
-      <CategoryBox /> */}
+    <section className="flex flex-col gap-4 bg-neutral-100 px-[8%] py-5">
+      {/* <FiltersMenu /> */}
+      <CategoryBox categoryName={category} />
       <SortAndAlignToggle
         mode={displayMode}
         setMode={setDisplayMode}

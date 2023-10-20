@@ -12,7 +12,7 @@ const Home = async () => {
       <CategoriesDisplay />
       <div className="bg-neutral-100 px-40">
         <ListingDisplay
-          listings={listings}
+          listings={listings.listings}
           mode="grid"
           mainPage
           title="Recent Listings"
