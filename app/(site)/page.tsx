@@ -10,7 +10,7 @@ const Home = async () => {
     <>
       <SearchBox />
       <CategoriesDisplay />
-      <div className="bg-neutral-100 px-40">
+      <div className="bg-neutral-100 lg:px-40">
         <ListingDisplay
           listings={listings.listings}
           mode="grid"
