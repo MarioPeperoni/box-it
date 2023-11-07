@@ -1,4 +1,4 @@
-![boxitLogo](public/boxIt.svg)
+![boxitLogo](public/boxItWhite.svg)
 
 # Welcome to Box It! :package:
 
