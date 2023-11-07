@@ -2,11 +2,15 @@
 
 import { Formik, Form, Field } from "formik";
 
+import { useRouter } from "next/navigation";
+
 import { HiMagnifyingGlass } from "react-icons/hi2";
 
 const SearchBox = () => {
+  const router = useRouter();
+
   const handleSubmit = (values: any) => {
-    console.log(values.searchQuery);
+    router.push(`/listings?search=${values.searchQuery}`);
   };
   return (
     <Formik initialValues={{ searchQuery: "" }} onSubmit={handleSubmit}>
@@ -20,12 +24,11 @@ const SearchBox = () => {
                 name="searchQuery"
                 placeholder="Search for items"
                 className="w-full p-3 text-lg font-light focus:outline-none"
-                required
               />
             </div>
             <button
               type="submit"
-              className="flex h-16 items-center justify-center gap-2 border-l-[1px] bg-white p-5 shadow-sm transition hover:bg-orange-300"
+              className="flex h-16 items-center justify-center gap-2 border-l-[1px] bg-white p-5 shadow-sm transition hover:bg-boxit-primary"
             >
               <span className="hidden font-semibold md:flex">Search</span>
               <HiMagnifyingGlass size={24} />

@@ -3,9 +3,11 @@ import { useFormikContext } from "formik";
 
 import { twMerge } from "tailwind-merge";
 
-import useCategories, { Category } from "@/app/hooks/useCategories";
+import useCategories from "@/app/hooks/useCategories";
 
 import { MdKeyboardArrowDown, MdKeyboardArrowRight } from "react-icons/md";
+
+import Category from "@/types/Category";
 
 interface CategoriesDropdownProps {
   errors?: any;
@@ -43,10 +45,7 @@ const CategoriesDropdown: React.FC<CategoriesDropdownProps> = ({
         <div className="flex items-center justify-between">
           {selected ? (
             <div className="flex items-center justify-center gap-3">
-              <selected.icon
-                size={18}
-                className={`${selected.colors.colorText}`}
-              />
+              <selected.icon size={18} className={`${selected.colors.icon}`} />
               <span>{selected.name}</span>
             </div>
           ) : (
@@ -70,7 +69,7 @@ const CategoriesDropdown: React.FC<CategoriesDropdownProps> = ({
               <div className="flex items-center justify-center gap-3">
                 <category.icon
                   size={18}
-                  className={`${category.colors.colorText}`}
+                  className={`${category.colors.icon}`}
                 />
                 <span>{category.name}</span>
               </div>

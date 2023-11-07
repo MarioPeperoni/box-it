@@ -52,7 +52,7 @@ model ProductListing {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
   title         String
   category      String
-  photos        String[]
+  images        String[]
   description   String
   condition     String
   itemPrice     Float

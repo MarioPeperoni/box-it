@@ -27,7 +27,7 @@ const AddListing = () => {
   };
 
   const validationSchema = yup.object().shape({
-    title: yup.string().min(10).max(50).required("Title is required"),
+    title: yup.string().min(10).max(100).required("Title is required"),
     description: yup.string().min(30).required("Description is required"),
     images: yup.array().min(1).required("At least one image is required"),
     itemPrice: yup
