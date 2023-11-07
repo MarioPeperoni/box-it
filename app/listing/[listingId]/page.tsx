@@ -62,7 +62,11 @@ const ListingPage = async ({ params }: { params: IParams }) => {
         </div>
         <div className="mx-[3%] w-full max-w-[1120px] self-center bg-white p-5">
           <h2 className="text-2xl font-semibold">Description</h2>
-          <span>{listing.description}</span>
+          <span
+            dangerouslySetInnerHTML={{
+              __html: listing.description.replace(/\n/g, "<br>"),
+            }}
+          />
           <hr className="my-3" />
           <div className="flex justify-between text-xs font-bold text-neutral-400">
             <p>Added {format(new Date(listing.createdAt), "dd/MM/yyyy")}</p>
