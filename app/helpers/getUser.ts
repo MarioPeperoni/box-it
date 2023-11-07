@@ -2,27 +2,45 @@ import prisma from "@/app/libs/prismadb";
 
 import getSession from "./getSession";
 
-const getUser = async () => {
-  try {
-    const session = await getSession();
+const getUser = async (id?: string) => {
+  if (id) {
+    try {
+      const user = await prisma.user.findUnique({
+        where: {
+          id,
+        },
+      });
 
-    if (!session?.user?.email) {
+      if (!user) {
+        return null;
+      }
+
+      return user;
+    } catch {
       return null;
     }
+  } else {
+    try {
+      const session = await getSession();
 
-    const currentUser = await prisma.user.findUnique({
-      where: {
-        email: session.user.email as string,
-      },
-    });
+      if (!session?.user?.email) {
+        return null;
+      }
 
-    if (!currentUser) {
+      const currentUser = await prisma.user.findUnique({
+        where: {
+          email: session.user.email as string,
+        },
+      });
+
+      if (!currentUser) {
+        return null;
+      }
+
+      return currentUser;
+    } catch {
       return null;
     }
-
-    return currentUser;
-  } catch {
-    return null;
   }
 };
 
