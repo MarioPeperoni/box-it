@@ -29,12 +29,12 @@ const ImageBrowser: React.FC<ImageBrowserProps> = ({ images }) => {
   };
 
   return (
-    <div className="group relative flex h-[500px] w-[700px] cursor-pointer select-none items-center overflow-hidden bg-white">
+    <div className="group relative flex h-[300px] w-[100%] cursor-pointer select-none items-center overflow-hidden bg-white md:h-[500px] lg:h-[500px] lg:w-[700px]">
       <Image
         alt="Listing Image"
         src={currentImage}
         fill
-        className="object-contain p-5"
+        className=" touch-none object-contain p-5"
       />
       <BsFillArrowRightSquareFill
         size={38}

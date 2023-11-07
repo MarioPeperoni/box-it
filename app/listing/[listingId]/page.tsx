@@ -21,11 +21,11 @@ const ListingPage = async ({ params }: { params: IParams }) => {
   }
 
   return listing ? (
-    <section className="flex justify-center bg-neutral-100 py-8">
+    <section className="flex justify-center bg-neutral-100 px-[3%] py-8">
       <div className="flex flex-col gap-5">
-        <div className="flex gap-5">
+        <div className="flex flex-col gap-5 lg:flex-row">
           <ImageBrowser images={listing.images} />
-          <div className="flex w-[400px] flex-col gap-5">
+          <div className="flex flex-col gap-5 lg:w-[400px]">
             <div className="bg-white p-5">
               <p className=" text-sm font-light">
                 Added {format(new Date(listing.createdAt), "dd/MM/yyyy")}
@@ -60,7 +60,7 @@ const ListingPage = async ({ params }: { params: IParams }) => {
             </div>
           </div>
         </div>
-        <div className="w-[1120px] bg-white p-5">
+        <div className="mx-[3%] w-full max-w-[1120px] self-center bg-white p-5">
           <h2 className="text-2xl font-semibold">Description</h2>
           <span>{listing.description}</span>
           <hr className="my-3" />
