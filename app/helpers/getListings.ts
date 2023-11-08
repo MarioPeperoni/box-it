@@ -20,6 +20,7 @@ const getListings = async (
           category: {
             contains: category,
           },
+          status: "active",
         },
         orderBy: {
           itemPrice: sort === "priceasc" ? "asc" : "desc",
@@ -36,6 +37,7 @@ const getListings = async (
           category: {
             contains: category,
           },
+          status: "active",
         },
         orderBy: {
           itemPrice: sort === "priceasc" ? "asc" : "desc",
@@ -59,6 +61,7 @@ const getListings = async (
           category: {
             contains: category,
           },
+          status: "active",
         },
         orderBy: {
           createdAt: "desc",
@@ -76,6 +79,7 @@ const getListings = async (
           category: {
             contains: category,
           },
+          status: "active",
         },
         orderBy: {
           createdAt: "desc",

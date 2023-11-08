@@ -20,6 +20,11 @@ const Body: React.FC<BodyProps> = ({ listing, sellerUser }) => {
   useEffect(() => {
     axios.post(`/api/listing/${listing.id}/view`);
   }, [listing]);
+
+  const onBuyNow = async () => {
+    const response = await axios.post(`/api/listing/${listing.id}/checkout`);
+    window.location = response.data.url;
+  };
   return (
     <section className="flex justify-center bg-neutral-100 px-[3%] py-8">
       <div className="flex flex-col gap-5">
@@ -45,7 +50,10 @@ const Body: React.FC<BodyProps> = ({ listing, sellerUser }) => {
                 </p>
               )}
               <div className="flex flex-col gap-2 pt-2">
-                <button className="flex items-center justify-center gap-2 bg-boxit-primary py-2 transition hover:bg-boxit-primary/80">
+                <button
+                  className="flex items-center justify-center gap-2 bg-boxit-primary py-2 transition hover:bg-boxit-primary/80"
+                  onClick={onBuyNow}
+                >
                   <FaBoxOpen className="text-2xl" />
                   <p className="font-semibold">Buy now</p>
                 </button>
