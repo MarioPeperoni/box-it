@@ -11,7 +11,7 @@ Offers modern and responsive design, seamless user experience, and a range of po
 - **User Profiles**: Create your own user profile and manage your account
 - **Product Management**: Add, edit, and delete your products listings
 - **Shopping Cart**: Add products to your cart and complete your purchase _(yet to be implemented)_
-- **Payment Processing**: Process payments securely and effortlessly _(yet to be implemented)_
+- **Payment Processing**: Process payments securely and effortlessly
 - **Search and filtering**: Search for products by name or description and filter by category
 - **Responsive Design**: Enjoy a seamless user experience on any device
 
