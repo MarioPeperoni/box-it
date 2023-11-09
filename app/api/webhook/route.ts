@@ -26,10 +26,11 @@ export async function POST(request: Request) {
   const listingId = session?.metadata?.listingId;
   const orderId = session?.metadata?.orderId;
 
-  const address = session.customer_details?.address;
+  const addressStripe = session.customer_details?.address;
+  const nameStripe = session.customer_details?.name;
 
   if (event.type === "checkout.session.completed") {
-    if (!userId || !listingId || !orderId || !address) {
+    if (!userId || !listingId || !orderId || !addressStripe || !nameStripe) {
       return new NextResponse("Webhook error: Missing metadata", {
         status: 400,
       });
@@ -44,12 +45,28 @@ export async function POST(request: Request) {
       },
     });
 
+    const address = await prisma.address.create({
+      data: {
+        name: nameStripe,
+        line1: addressStripe.line1,
+        line2: addressStripe.line2,
+        city: addressStripe.city,
+        zip: addressStripe.postal_code,
+        country: addressStripe.country,
+      },
+    });
+
     await prisma.order.update({
       where: {
         id: orderId,
       },
       data: {
         status: "paid",
+        addres: {
+          connect: {
+            id: address.id,
+          },
+        },
       },
     });
   } else {

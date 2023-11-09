@@ -40,6 +40,9 @@ model Order {
 
   status String @default("pending")
 
+  addressId String?  @db.ObjectId
+  addres    Address? @relation(fields: [addressId], references: [id])
+
   buyerId String @db.ObjectId
   buyer   User   @relation(fields: [buyerId], references: [id])
 
@@ -81,4 +84,20 @@ model Cart {
   user   User   @relation(fields: [userId], references: [id])
 
   items ProductListing[]
+}
+
+model Address {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  name    String?
+  line1   String?
+  line2   String?
+  city    String?
+  zip     String?
+  country String?
+
+  Order Order[]
 }
