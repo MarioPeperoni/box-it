@@ -1,8 +1,10 @@
-import getUser from "@/app/helpers/getUser";
 import { NextResponse } from "next/server";
-import prisma from "@/app/libs/prismadb";
 import Stripe from "stripe";
+
+import prisma from "@/app/libs/prismadb";
 import { stripe } from "@/app/libs/stripe";
+
+import getUser from "@/app/helpers/getUser";
 
 interface IParams {
   listingId?: string;
@@ -113,6 +115,9 @@ export async function POST(request: Request, { params }: { params: IParams }) {
         userId: user.id,
         listingId: product.id,
         orderId: order.id,
+      },
+      payment_intent_data: {
+        capture_method: "manual",
       },
     });
 

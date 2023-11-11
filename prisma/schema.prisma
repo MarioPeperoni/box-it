@@ -25,11 +25,11 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  ProductListings ProductListing[]
+  productListings ProductListing[]
 
-  Orders Order[]
+  orders Order[]
 
-  Cart Cart?
+  cart Cart?
 }
 
 model Order {
@@ -69,9 +69,9 @@ model ProductListing {
   sellerId String @db.ObjectId
   seller   User   @relation(fields: [sellerId], references: [id])
 
-  Order Order[]
+  order Order[]
 
-  Cart   Cart?   @relation(fields: [cartId], references: [id])
+  cart   Cart?   @relation(fields: [cartId], references: [id])
   cartId String? @db.ObjectId
 }
 
@@ -99,5 +99,5 @@ model Address {
   zip     String?
   country String?
 
-  Order Order[]
+  order Order[]
 }

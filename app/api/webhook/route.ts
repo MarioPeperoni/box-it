@@ -30,18 +30,46 @@ export async function POST(request: Request) {
   const nameStripe = session.customer_details?.name;
 
   if (event.type === "checkout.session.completed") {
-    if (!userId || !listingId || !orderId || !addressStripe || !nameStripe) {
+    if (
+      !userId ||
+      !listingId ||
+      !orderId ||
+      !addressStripe ||
+      !nameStripe ||
+      !session.payment_intent
+    ) {
       return new NextResponse("Webhook error: Missing metadata", {
         status: 400,
       });
     }
+
+    const product = await prisma.productListing.findUnique({
+      where: {
+        id: listingId,
+      },
+    });
+
+    // Cancel payment if listing was already sold or deleted
+    if (!product || product?.status !== "active") {
+      await stripe.paymentIntents.cancel(session.payment_intent.toString());
+      await prisma.order.delete({
+        where: {
+          id: orderId,
+        },
+      });
+      return new NextResponse("Listing was already sold or deleted", {
+        status: 404,
+      });
+    }
+
+    await stripe.paymentIntents.capture(session.payment_intent?.toString());
 
     await prisma.productListing.update({
       where: {
         id: listingId,
       },
       data: {
-        status: "active", // Set to "active" for testing purposes
+        status: "sold",
       },
     });
 
