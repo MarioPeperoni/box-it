@@ -6,6 +6,7 @@ import axios from "axios";
 
 import ImageBrowser from "./ImageBrowser";
 import SellerDisplay from "./SellerDisplay";
+import StatusItem from "./StatusItem";
 
 import { format } from "date-fns";
 
@@ -25,9 +26,11 @@ const Body: React.FC<BodyProps> = ({ listing, sellerUser }) => {
     const response = await axios.post(`/api/listing/${listing.id}/checkout`);
     window.location = response.data.url;
   };
+
   return (
     <section className="flex justify-center bg-neutral-100 px-[3%] py-8">
       <div className="flex flex-col gap-5">
+        <StatusItem status={listing.status} />
         <div className="flex flex-col gap-5 lg:flex-row">
           <ImageBrowser images={listing.images} />
           <div className="flex flex-col gap-5 lg:w-[400px]">
@@ -49,19 +52,21 @@ const Body: React.FC<BodyProps> = ({ listing, sellerUser }) => {
                   Plus shipping {listing.shippingPrice}$
                 </p>
               )}
-              <div className="flex flex-col gap-2 pt-2">
-                <button
-                  className="flex items-center justify-center gap-2 bg-boxit-primary py-2 transition hover:bg-boxit-primary/80"
-                  onClick={onBuyNow}
-                >
-                  <FaBoxOpen className="text-2xl" />
-                  <p className="font-semibold">Buy now</p>
-                </button>
-                <button className="flex items-center justify-center gap-2 bg-boxit-primary py-2 transition hover:bg-boxit-primary/80">
-                  <FaShoppingBasket className="text-2xl" />
-                  <p className="font-semibold">Add to basket</p>
-                </button>
-              </div>
+              {listing.status === "active" && (
+                <div className="flex flex-col gap-2 pt-2">
+                  <button
+                    className="flex items-center justify-center gap-2 bg-boxit-primary py-2 transition hover:bg-boxit-primary/80"
+                    onClick={onBuyNow}
+                  >
+                    <FaBoxOpen className="text-2xl" />
+                    <p className="font-semibold">Buy now</p>
+                  </button>
+                  <button className="flex items-center justify-center gap-2 bg-boxit-primary py-2 transition hover:bg-boxit-primary/80">
+                    <FaShoppingBasket className="text-2xl" />
+                    <p className="font-semibold">Add to basket</p>
+                  </button>
+                </div>
+              )}
             </div>
             <div className="bg-white p-5">
               <SellerDisplay sellerUser={sellerUser!} />
