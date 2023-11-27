@@ -57,6 +57,7 @@ export async function POST(request: Request) {
           id: orderId,
         },
       });
+      await stripe.checkout.sessions.expire(session.id);
       return new NextResponse("Listing was already sold or deleted", {
         status: 404,
       });

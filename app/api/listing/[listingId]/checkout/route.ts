@@ -81,20 +81,11 @@ export async function POST(request: Request, { params }: { params: IParams }) {
       },
     });
 
-    await prisma.productListing.update({
-      where: {
-        id: product.id,
-      },
-      data: {
-        status: "active", // Set to "active" for testing purposes
-      },
-    });
-
     const session = await stripe.checkout.sessions.create({
       customer: stripeCustomer.stripeCustumerId!,
       line_items,
       mode: "payment",
-      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/listing/${product.id}`,
+      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/listing/${product.id}/order-placed?orderId=${order.id}`,
       cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/listing/${product.id}`,
       shipping_address_collection: {
         allowed_countries: ["PL"],

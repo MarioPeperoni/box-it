@@ -6,6 +6,7 @@ interface ButtonProps {
   primary?: boolean;
   disabled?: boolean;
   onClick?: () => void;
+  className?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -14,6 +15,7 @@ const Button: React.FC<ButtonProps> = ({
   primary,
   disabled,
   onClick,
+  className,
 }) => {
   return (
     <button
@@ -25,6 +27,7 @@ const Button: React.FC<ButtonProps> = ({
           ? "rounded-sm border-4 border-white bg-boxit-primary px-5 py-3 font-bold transition-all duration-300 enabled:hover:border-8 enabled:hover:border-boxit-primary enabled:hover:bg-white enabled:hover:px-4 enabled:hover:py-2"
           : "border-b-2 border-white font-semibold transition hover:border-boxit-primary",
         disabled && "bg-gray-300",
+        className,
       )}
     >
       {children}

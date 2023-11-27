@@ -2,6 +2,7 @@ import getListing from "@/app/helpers/getListing";
 import getUser from "@/app/helpers/getUser";
 
 import Body from "../components/Body";
+import WebInfoBox from "@/app/components/WebInfoBox";
 
 import { PiSmileySadDuotone } from "react-icons/pi";
 
@@ -19,14 +20,12 @@ const ListingPage = async ({ params }: { params: IParams }) => {
   return listing ? (
     <Body listing={listing} sellerUser={sellerUser!} />
   ) : (
-    <div className="flex justify-center bg-neutral-100 py-8">
-      <div className="flex flex-col items-center bg-white p-20 py-10">
-        <PiSmileySadDuotone className="text-8xl text-boxit-primary" />
-        <p className="pt-2 font-semibold">
-          OOPS... something went wrong with this one
-        </p>
-      </div>
-    </div>
+    <WebInfoBox>
+      <PiSmileySadDuotone className="text-8xl text-boxit-primary" />
+      <p className="pt-2 font-semibold">
+        OOPS... something went wrong with this one
+      </p>
+    </WebInfoBox>
   );
 };
 
