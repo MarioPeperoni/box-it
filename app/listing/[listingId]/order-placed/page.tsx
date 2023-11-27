@@ -58,7 +58,7 @@ const Buy_Success = async ({ params }: { params: IParams }) => {
         >
           <FaBoxOpen className="text-8xl text-boxit-primary" />
           <h1 className="mb-2 text-4xl font-bold text-gray-800">
-            We're sorry!
+            We&apos;re sorry!
           </h1>
           <p className=" text-lg text-gray-600">
             Your order for this item has been cancelled.

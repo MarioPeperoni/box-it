@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { ProductListing, User } from "@prisma/client";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 
 import ImageBrowser from "./ImageBrowser";
@@ -22,9 +23,11 @@ const Body: React.FC<BodyProps> = ({ listing, sellerUser }) => {
     axios.post(`/api/listing/${listing.id}/view`);
   }, [listing]);
 
+  const router = useRouter();
+
   const onBuyNow = async () => {
     const response = await axios.post(`/api/listing/${listing.id}/checkout`);
-    window.location = response.data.url;
+    router.push(response.data.url);
   };
 
   return (

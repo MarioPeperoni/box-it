@@ -43,8 +43,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(initial);
-
-  const formik = id ? useFormikContext() : undefined;
+  const formik = useFormikContext();
 
   const handleSelect = (item: string) => {
     if (!handle && formik) {

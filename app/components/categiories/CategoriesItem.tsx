@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 interface CategoriesItemProps {
-  href: string;
   name: string;
   icon: any;
   colors: any;
@@ -10,7 +9,6 @@ interface CategoriesItemProps {
 const CategoriesItem: React.FC<CategoriesItemProps> = ({
   name,
   icon: Icon,
-  href,
   colors,
 }) => {
   return (

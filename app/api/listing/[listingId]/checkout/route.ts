@@ -78,6 +78,7 @@ export async function POST(request: Request, { params }: { params: IParams }) {
         buyerId: user.id,
         productId: product.id,
         status: "pending",
+        fullPrice: product.itemPrice + product.shippingPrice,
       },
     });
 

@@ -7,9 +7,9 @@ interface CategoryBoxInterface {
 }
 
 const CategoryBox: React.FC<CategoryBoxInterface> = ({ categoryName }) => {
-  if (categoryName === "") return null;
-
   const categories = useCategories();
+
+  if (categoryName === "") return null;
   const category = categories.filter((cat) => cat.name === categoryName)[0];
   return (
     <div

@@ -65,7 +65,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ changeVariant }) => {
         </Button>
 
         <p className="flex justify-center gap-1 text-sm font-light">
-          Don't have a Box It account?{" "}
+          Don&apos;t have a Box It account?
           <button
             className="text-boxit-primary transition hover:underline"
             onClick={changeVariant}
