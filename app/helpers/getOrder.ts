@@ -1,10 +1,14 @@
 import prisma from "@/app/libs/prismadb";
 
-const getOrder = async (orderId: string) => {
+const getOrder = async (orderId: string, includeAll = true) => {
   try {
     const order = prisma.order.findFirst({
       where: {
         id: orderId,
+      },
+      include: {
+        addres: includeAll,
+        product: includeAll,
       },
     });
 

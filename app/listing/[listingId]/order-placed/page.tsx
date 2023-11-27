@@ -10,7 +10,7 @@ interface IParams {
 }
 
 const Buy_Success = async ({ params }: { params: IParams }) => {
-  const order = await getOrder(params.orderId);
+  const order = await getOrder(params.orderId, false);
 
   switch (order?.status) {
     case "paid":

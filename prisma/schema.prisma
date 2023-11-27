@@ -48,6 +48,8 @@ model Order {
 
   productId String         @db.ObjectId
   product   ProductListing @relation(fields: [productId], references: [id])
+
+  fullPrice Float
 }
 
 model ProductListing {
