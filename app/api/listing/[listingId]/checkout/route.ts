@@ -56,7 +56,7 @@ export async function POST(request: Request, { params }: { params: IParams }) {
       },
     });
 
-    if (!stripeCustomer) {
+    if (stripeCustomer?.stripeCustumerId === null) {
       const custumer = await stripe.customers.create({
         email: user.email,
       });
@@ -83,7 +83,7 @@ export async function POST(request: Request, { params }: { params: IParams }) {
     });
 
     const session = await stripe.checkout.sessions.create({
-      customer: stripeCustomer.stripeCustumerId!,
+      customer: stripeCustomer!.stripeCustumerId!,
       line_items,
       mode: "payment",
       success_url: `${process.env.NEXT_PUBLIC_APP_URL}/listing/${product.id}/order-placed?orderId=${order.id}`,
