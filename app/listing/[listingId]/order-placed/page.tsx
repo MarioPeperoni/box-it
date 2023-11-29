@@ -5,12 +5,14 @@ import { FaRotate } from "react-icons/fa6";
 
 import getOrder from "@/app/helpers/getOrder";
 
-interface IParams {
-  orderId: string;
+interface Buy_SuccessParams {
+  searchParams: {
+    orderId: string;
+  };
 }
 
-const Buy_Success = async ({ params }: { params: IParams }) => {
-  const order = await getOrder(params.orderId, false);
+const Buy_Success = async ({ searchParams }: Buy_SuccessParams) => {
+  const order = await getOrder(searchParams.orderId, false);
 
   switch (order?.status) {
     case "paid":
