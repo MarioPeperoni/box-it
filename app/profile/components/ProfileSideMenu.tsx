@@ -4,23 +4,29 @@ import { usePathname } from "next/navigation";
 
 import ProfileSideMenuItem from "./SideMenuItem";
 
-import { FaMoneyBillWave, FaList, FaCogs } from "react-icons/fa";
+import { FaMoneyBillWave, FaList, FaCogs, FaBoxOpen } from "react-icons/fa";
 
 const ProfileSideMenu = () => {
   const pathname = usePathname();
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-auto flex-row justify-center md:h-full md:flex-col md:justify-start">
       <ProfileSideMenuItem
-        text="Listings"
+        text="My listings"
         href="listings"
         icon={FaList}
         active={pathname === "/profile/listings"}
       />
       <ProfileSideMenuItem
-        text="Orders"
+        text="My orders"
         href="orders"
-        icon={FaMoneyBillWave}
+        icon={FaBoxOpen}
         active={pathname === "/profile/orders"}
+      />
+      <ProfileSideMenuItem
+        text="Payments"
+        href="payments"
+        icon={FaMoneyBillWave}
+        active={pathname === "/profile/payments"}
       />
       <ProfileSideMenuItem
         text="Settings"

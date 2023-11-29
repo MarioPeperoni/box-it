@@ -1,10 +1,10 @@
 import prisma from "@/app/libs/prismadb";
 
-const getOrder = async (orderId: string, includeAll = true) => {
+const getOrders = async (userId: string, includeAll = true) => {
   try {
-    const order = prisma.order.findFirst({
+    const orders = prisma.order.findMany({
       where: {
-        id: orderId,
+        buyerId: userId,
       },
       include: {
         addres: includeAll,
@@ -14,17 +14,20 @@ const getOrder = async (orderId: string, includeAll = true) => {
           },
         },
       },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
 
-    if (!order) {
+    if (!orders) {
       return null;
     }
 
-    return order;
+    return orders;
   } catch (error) {
     console.log(error);
     return null;
   }
 };
 
-export default getOrder;
+export default getOrders;
