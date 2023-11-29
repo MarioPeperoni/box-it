@@ -50,7 +50,11 @@ const ProfileButton: React.FC<ProfileButtonProps> = ({ user }) => {
     </div>
   ) : (
     <div className="group">
-      <LinkWithIcon href="/profile" icon={FiUser} text="Your account" />
+      <LinkWithIcon
+        href="/profile/listings"
+        icon={FiUser}
+        text="Your account"
+      />
       <div className="absolute hidden w-48 group-hover:block">
         <div className="h-6" />
         <ProfileButtonOption href="/login" text="Log in" icon={FiLogIn} />
