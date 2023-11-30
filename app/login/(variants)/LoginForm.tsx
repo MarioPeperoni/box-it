@@ -25,7 +25,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ changeVariant }) => {
         if (callback?.ok && !callback?.error) {
           toast.success("Logged in successfully");
         }
-        console.log(callback);
       })
       .finally(() => setIsLoading(false));
   };

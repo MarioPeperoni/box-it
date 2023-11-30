@@ -45,11 +45,9 @@ const getListings = async (
       });
 
       if (!listings) {
-        console.log({ listings: [], count: 0 });
         return { listings: [], count: 0 };
       }
 
-      console.log({ listings: listings, count: listingsNumber as number });
       return { listings: listings, count: listingsNumber as number };
     } else {
       const listings = await prisma.productListing.findMany({
@@ -87,11 +85,8 @@ const getListings = async (
       });
 
       if (!listings) {
-        console.log({ listings: [], count: 0 });
         return { listings: [], count: 0 };
       }
-
-      console.log({ listings: listings, count: listingsNumber as number });
       return { listings: listings, count: listingsNumber as number };
     }
   } catch (error) {
