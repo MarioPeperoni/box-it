@@ -20,7 +20,7 @@ const ListingPage = async ({ params }: { params: IParams }) => {
   }
 
   return listing ? (
-    <Body listing={listing} sellerUser={sellerUser!} user={user!} />
+    <Body listing={listing} sellerUser={sellerUser!} user={user} />
   ) : (
     <WebInfoBox>
       <PiSmileySadDuotone className="text-8xl text-boxit-primary" />

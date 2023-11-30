@@ -21,7 +21,7 @@ import {
 interface BodyProps {
   listing: ProductListing;
   sellerUser: User;
-  user: User;
+  user: User | null;
 }
 
 const Body: React.FC<BodyProps> = ({ listing, sellerUser, user }) => {
@@ -40,7 +40,7 @@ const Body: React.FC<BodyProps> = ({ listing, sellerUser, user }) => {
     <section className="flex justify-center bg-neutral-100 px-[3%] py-8">
       <div className="flex flex-col gap-5">
         <StatusItem
-          status={listing.sellerId === user.id ? "own" : listing.status}
+          status={user && listing.sellerId === user.id ? "own" : listing.status}
         />
         <div className="flex flex-col gap-5 lg:flex-row">
           <ImageBrowser images={listing.images} />
@@ -63,7 +63,10 @@ const Body: React.FC<BodyProps> = ({ listing, sellerUser, user }) => {
                   Plus shipping {listing.shippingPrice}$
                 </p>
               )}
-              {listing.status === "active" && listing.sellerId !== user.id && (
+              {(!user ||
+                (user &&
+                  listing.status === "active" &&
+                  listing.sellerId !== user.id)) && (
                 <div className="flex flex-col gap-2 pt-2">
                   <button
                     className="flex items-center justify-center gap-2 bg-boxit-primary py-2 transition hover:bg-boxit-primary/80"
@@ -78,7 +81,7 @@ const Body: React.FC<BodyProps> = ({ listing, sellerUser, user }) => {
                   </button>
                 </div>
               )}
-              {listing.sellerId === user.id && (
+              {user && listing.sellerId === user.id && (
                 <div className="flex flex-col gap-2 pt-2">
                   <button
                     className="flex items-center justify-center gap-2 bg-boxit-primary py-2 transition hover:bg-boxit-primary/80"
