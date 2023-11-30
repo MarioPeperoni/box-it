@@ -4,6 +4,8 @@
 
 Box It! is all in one marketplace website. Where you can add your products and sell them. Whether you're a seller looking to showcase your products or a buyer searching for unique items, Box It! is here!
 
+**Live website:** [box-it.vercel.app](https://box-it.vercel.app/)
+
 Offers modern and responsive design, seamless user experience, and a range of powerful technologies under the hood!
 
 ### Features
