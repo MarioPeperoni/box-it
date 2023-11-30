@@ -21,7 +21,7 @@ const Buy_Success = async ({ searchParams }: Buy_SuccessParams) => {
           className=""
           buttonText="Go to order"
           action={"redirect"}
-          href={`/order/${order!.id}`}
+          href={`/profile/orders`}
         >
           <FaBoxOpen className="text-8xl text-boxit-primary" />
           <h1 className="mb-2 text-4xl font-bold text-gray-800">

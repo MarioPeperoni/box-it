@@ -30,7 +30,11 @@ const ProfileButton: React.FC<ProfileButtonProps> = ({ user }) => {
   };
   return user ? (
     <div className="group">
-      <LinkWithIcon href="/profile" icon={FiUser} text={user.username} />
+      <LinkWithIcon
+        href="/profile/listings"
+        icon={FiUser}
+        text={user.username}
+      />
       <div className={"absolute hidden w-48 group-hover:block"}>
         <div className="h-6" />
         <ProfileButtonOption
