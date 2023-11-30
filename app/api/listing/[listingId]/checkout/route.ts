@@ -27,8 +27,8 @@ export async function POST(request: Request, { params }: { params: IParams }) {
 
     if (
       !product ||
-      product.status !== "active"
-      // product.sellerId === user.id // Commented for testing purposes
+      product.status !== "active" ||
+      product.sellerId === user.id
     ) {
       return new NextResponse("Not found", { status: 404 });
     }
@@ -79,6 +79,7 @@ export async function POST(request: Request, { params }: { params: IParams }) {
         productId: product.id,
         status: "pending",
         fullPrice: product.itemPrice + product.shippingPrice,
+        stripeSessionUrl: "waiting for stripe session url",
       },
     });
 
@@ -110,6 +111,15 @@ export async function POST(request: Request, { params }: { params: IParams }) {
       },
       payment_intent_data: {
         capture_method: "manual",
+      },
+    });
+
+    await prisma.order.update({
+      where: {
+        id: order.id,
+      },
+      data: {
+        stripeSessionUrl: session.url!,
       },
     });
 

@@ -50,6 +50,10 @@ model Order {
   product   ProductListing @relation(fields: [productId], references: [id])
 
   fullPrice Float
+
+  trackingNumber String?
+
+  stripeSessionUrl String
 }
 
 model ProductListing {

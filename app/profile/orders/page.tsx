@@ -11,7 +11,7 @@ const ProfileOrders = async () => {
     <section className="w-full">
       <h1 className="mb-3 text-2xl font-bold">My orders</h1>
       <div className="flex flex-col gap-2">
-        {orders ? (
+        {orders?.length !== 0 ? (
           // @ts-ignore
           orders.map((order) => <OrderItem key={order.id} order={order} />)
         ) : (
