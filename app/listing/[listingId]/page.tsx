@@ -12,13 +12,15 @@ interface IParams {
 
 const ListingPage = async ({ params }: { params: IParams }) => {
   const listing = await getListing(params.listingId);
+  const user = await getUser();
+
   let sellerUser = null;
   if (listing) {
     sellerUser = await getUser(listing.sellerId);
   }
 
   return listing ? (
-    <Body listing={listing} sellerUser={sellerUser!} />
+    <Body listing={listing} sellerUser={sellerUser!} user={user!} />
   ) : (
     <WebInfoBox>
       <PiSmileySadDuotone className="text-8xl text-boxit-primary" />

@@ -11,14 +11,20 @@ import StatusItem from "./StatusItem";
 
 import { format } from "date-fns";
 
-import { FaBoxOpen, FaShoppingBasket } from "react-icons/fa";
+import {
+  FaBoxOpen,
+  FaChevronRight,
+  FaEdit,
+  FaShoppingBasket,
+} from "react-icons/fa";
 
 interface BodyProps {
   listing: ProductListing;
   sellerUser: User;
+  user: User;
 }
 
-const Body: React.FC<BodyProps> = ({ listing, sellerUser }) => {
+const Body: React.FC<BodyProps> = ({ listing, sellerUser, user }) => {
   useEffect(() => {
     axios.post(`/api/listing/${listing.id}/view`);
   }, [listing]);
@@ -33,7 +39,9 @@ const Body: React.FC<BodyProps> = ({ listing, sellerUser }) => {
   return (
     <section className="flex justify-center bg-neutral-100 px-[3%] py-8">
       <div className="flex flex-col gap-5">
-        <StatusItem status={listing.status} />
+        <StatusItem
+          status={listing.sellerId === user.id ? "own" : listing.status}
+        />
         <div className="flex flex-col gap-5 lg:flex-row">
           <ImageBrowser images={listing.images} />
           <div className="flex flex-col gap-5 lg:w-[400px]">
@@ -55,7 +63,7 @@ const Body: React.FC<BodyProps> = ({ listing, sellerUser }) => {
                   Plus shipping {listing.shippingPrice}$
                 </p>
               )}
-              {listing.status === "active" && (
+              {listing.status === "active" && listing.sellerId !== user.id && (
                 <div className="flex flex-col gap-2 pt-2">
                   <button
                     className="flex items-center justify-center gap-2 bg-boxit-primary py-2 transition hover:bg-boxit-primary/80"
@@ -67,6 +75,24 @@ const Body: React.FC<BodyProps> = ({ listing, sellerUser }) => {
                   <button className="flex items-center justify-center gap-2 bg-boxit-primary py-2 transition hover:bg-boxit-primary/80">
                     <FaShoppingBasket className="text-2xl" />
                     <p className="font-semibold">Add to basket</p>
+                  </button>
+                </div>
+              )}
+              {listing.sellerId === user.id && (
+                <div className="flex flex-col gap-2 pt-2">
+                  <button
+                    className="flex items-center justify-center gap-2 bg-boxit-primary py-2 transition hover:bg-boxit-primary/80"
+                    onClick={() => router.push("/profile/listings")}
+                  >
+                    <FaEdit className="text-2xl" />
+                    <p className="font-semibold">Edit listing</p>
+                  </button>
+                  <button
+                    className="flex items-center justify-center gap-2 bg-boxit-primary py-2 transition hover:bg-boxit-primary/80"
+                    onClick={() => router.push("/profile/listings")}
+                  >
+                    <FaChevronRight className="text-2xl" />
+                    <p className="font-semibold">Go to my listings</p>
                   </button>
                 </div>
               )}

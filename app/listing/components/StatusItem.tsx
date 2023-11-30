@@ -18,10 +18,17 @@ const StatusItem: React.FC<StatusItemProps> = ({ status }) => {
       colorBackground: "bg-red-100",
       colorText: "text-red-700",
     },
+    own: {
+      message: "This is your own listing",
+      colorBackground: "bg-green-100",
+      colorText: "text-green-700",
+    },
   };
 
   const statusEntry =
-    status === ("sold" || "deleted") ? statusDictionary[status] : null;
+    status === "sold" || status === "deleted" || status === "own"
+      ? statusDictionary[status]
+      : null;
 
   return (
     statusEntry && (

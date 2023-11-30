@@ -16,7 +16,7 @@ export async function POST(request: Request, { params }: { params: IParams }) {
     const user = await getUser();
 
     if (!user?.id) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return NextResponse.json({ url: "/login" });
     }
 
     const product = await prisma.productListing.findUnique({
