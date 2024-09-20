@@ -37,7 +37,7 @@ const BoxCard: React.FC<BoxCardProps> = ({ listing, showCategory = false }) => {
         Added {format(new Date(listing.createdAt), "dd/MM/yyyy")}
       </p>
       <div className="flex flex-1 flex-col justify-end">
-        <p className="text-lg font-bold">{listing.itemPrice}$</p>
+        <p className="text-lg font-bold">{listing.itemPrice}zł</p>
       </div>
     </Link>
   );

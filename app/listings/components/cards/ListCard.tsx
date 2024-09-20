@@ -37,7 +37,7 @@ const ListCard: React.FC<ListCardProps> = ({ listing }) => {
           </p>
         </div>
       </div>
-      <p className="py-2 text-lg font-bold">{listing.itemPrice}$</p>
+      <p className="py-2 text-lg font-bold">{listing.itemPrice}zł</p>
     </Link>
   );
 };

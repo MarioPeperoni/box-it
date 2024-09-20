@@ -108,7 +108,7 @@ const OrderItem: React.FC<OrderItemProps> = ({ order }) => {
               {order.product.title}
             </p>
           </div>
-          <p className="font-bold">{order.fullPrice}$</p>
+          <p className="font-bold">{order.fullPrice}zł</p>
         </div>
       </div>
       <div

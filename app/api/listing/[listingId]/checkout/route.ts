@@ -36,7 +36,7 @@ export async function POST(request: Request, { params }: { params: IParams }) {
     const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [
       {
         price_data: {
-          currency: "EUR",
+          currency: "PLN",
           product_data: {
             name: product.title,
             images: [product.images[0]],
@@ -98,7 +98,7 @@ export async function POST(request: Request, { params }: { params: IParams }) {
             type: "fixed_amount",
             fixed_amount: {
               amount: product.shippingPrice * 100,
-              currency: "EUR",
+              currency: "PLN",
             },
             display_name: "Seller individual shipping",
           },

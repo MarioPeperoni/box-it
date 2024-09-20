@@ -55,12 +55,12 @@ const Body: React.FC<BodyProps> = ({ listing, sellerUser, user }) => {
               </p>
             </div>
             <div className="bg-white p-5">
-              <p className="text-2xl font-bold">{listing.itemPrice}$</p>
+              <p className="text-2xl font-bold">{listing.itemPrice}zł</p>
               {listing.shippingPrice === 0 ? (
                 <p className=" font-semibold text-green-700">Free shipping</p>
               ) : (
                 <p className="font-light text-neutral-600">
-                  Plus shipping {listing.shippingPrice}$
+                  Plus shipping {listing.shippingPrice}zł
                 </p>
               )}
               {(!user ||
