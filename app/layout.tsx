@@ -21,11 +21,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="pt-16">
+      <body className="flex flex-col pt-16">
         <AuthContext>
           <Toaster />
           <Header />
-          {children}
+          <main className="flex-grow">{children}</main>
           <Footer />
         </AuthContext>
       </body>
