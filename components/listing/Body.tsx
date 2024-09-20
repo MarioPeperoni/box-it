@@ -5,9 +5,9 @@ import { ProductListing, User } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
-import ImageBrowser from "./ImageBrowser";
-import SellerDisplay from "./SellerDisplay";
-import StatusItem from "./StatusItem";
+import ImageBrowser from "@/components/listing/ImageBrowser";
+import SellerDisplay from "@/components/listing/SellerDisplay";
+import StatusItem from "@/components/listing/StatusItem";
 
 import { format } from "date-fns";
 
@@ -46,7 +46,7 @@ const Body: React.FC<BodyProps> = ({ listing, sellerUser, user }) => {
           <ImageBrowser images={listing.images} />
           <div className="flex flex-col gap-5 lg:w-[400px]">
             <div className="bg-white p-5">
-              <p className=" text-sm font-light">
+              <p className="text-sm font-light">
                 Added {format(new Date(listing.createdAt), "dd/MM/yyyy")}
               </p>
               <p className="text-xl font-bold">{listing.title}</p>
@@ -57,7 +57,7 @@ const Body: React.FC<BodyProps> = ({ listing, sellerUser, user }) => {
             <div className="bg-white p-5">
               <p className="text-2xl font-bold">{listing.itemPrice}zł</p>
               {listing.shippingPrice === 0 ? (
-                <p className=" font-semibold text-green-700">Free shipping</p>
+                <p className="font-semibold text-green-700">Free shipping</p>
               ) : (
                 <p className="font-light text-neutral-600">
                   Plus shipping {listing.shippingPrice}zł

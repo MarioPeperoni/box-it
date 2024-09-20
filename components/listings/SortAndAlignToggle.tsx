@@ -1,4 +1,4 @@
-import Dropdown from "@/app/components/form/Dropdown";
+import Dropdown from "@/components/form/Dropdown";
 
 import { twMerge } from "tailwind-merge";
 

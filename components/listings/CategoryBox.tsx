@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-import useCategories from "@/app/hooks/useCategories";
+import useCategories from "@/hooks/useCategories";
 
 interface CategoryBoxInterface {
   categoryName: string;

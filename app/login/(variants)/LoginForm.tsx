@@ -5,11 +5,11 @@ import { signIn } from "next-auth/react";
 
 import toast from "react-hot-toast";
 
-import Button from "@/app/components/Button";
-import Input from "@/app/components/form/Input";
+import Button from "@/components/Button";
+import Input from "@/components/form/Input";
+import BigErrorBox from "@/components/form/BigErrorBox";
 
-import { LoginFormProps } from "../page";
-import BigErrorBox from "@/app/components/form/BigErrorBox";
+import { LoginFormProps } from "@/app/login/page";
 
 const LoginForm: React.FC<LoginFormProps> = ({ changeVariant }) => {
   const [isLoading, setIsLoading] = useState(false);

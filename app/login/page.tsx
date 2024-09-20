@@ -5,8 +5,8 @@ import { useSession } from "next-auth/react";
 
 import { useRouter, useSearchParams } from "next/navigation";
 
-import LoginForm from "./(variants)/LoginForm";
-import RegisterForm from "./(variants)/RegisterForm";
+import LoginForm from "@/app/login/(variants)/LoginForm";
+import RegisterForm from "@/app/login/(variants)/RegisterForm";
 
 export interface LoginFormProps {
   changeVariant: () => void;

@@ -1,8 +1,8 @@
-import getListing from "@/app/helpers/getListing";
-import getUser from "@/app/helpers/getUser";
+import getListing from "@/helpers/getListing";
+import getUser from "@/helpers/getUser";
 
-import Body from "../components/Body";
-import WebInfoBox from "@/app/components/WebInfoBox";
+import Body from "@/components/listing/Body";
+import WebInfoBox from "@/components/WebInfoBox";
 
 import { PiSmileySadDuotone } from "react-icons/pi";
 

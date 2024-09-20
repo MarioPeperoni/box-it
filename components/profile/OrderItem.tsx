@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import format from "date-fns/format";
 import { twMerge } from "tailwind-merge";
 
-import Button from "@/app/components/Button";
+import Button from "@/components/Button";
 import OrderDetailItem from "./OrderDetailItem";
 
 import { Order, ProductListing, Address, User } from "@prisma/client";

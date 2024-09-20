@@ -1,6 +1,6 @@
-import getUser from "../helpers/getUser";
+import getUser from "@/helpers/getUser";
 
-import ProfileSideMenu from "./components/ProfileSideMenu";
+import ProfileSideMenu from "@/components/profile/ProfileSideMenu";
 
 const ProfileLayout = async ({ children }: { children: React.ReactNode }) => {
   const user = await getUser();

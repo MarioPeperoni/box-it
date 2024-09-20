@@ -1,7 +1,7 @@
-import getOrders from "@/app/helpers/getOrders";
-import getUser from "@/app/helpers/getUser";
+import getOrders from "@/helpers/getOrders";
+import getUser from "@/helpers/getUser";
 
-import OrderItem from "../components/OrderItem";
+import OrderItem from "@/components/profile/OrderItem";
 
 const ProfileOrders = async () => {
   const user = await getUser();

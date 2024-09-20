@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-import prisma from "@/app/libs/prismadb";
-import { stripe } from "@/app/libs/stripe";
+import prisma from "@/libs/prismadb";
+import { stripe } from "@/libs/stripe";
 
-import getUser from "@/app/helpers/getUser";
+import getUser from "@/helpers/getUser";
 
 interface IParams {
   listingId?: string;

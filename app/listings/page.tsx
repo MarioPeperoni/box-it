@@ -1,7 +1,8 @@
-import getListings from "../helpers/getListings";
+import getListings from "@/helpers/getListings";
 
-import SearchBox from "../(site)/components/SearchBox";
-import ListingsBody from "./ListingsBody";
+import ListingsBody from "@/app/listings/ListingsBody";
+
+import SearchBox from "@/components/SearchBox";
 
 import Filters from "@/types/Filter";
 

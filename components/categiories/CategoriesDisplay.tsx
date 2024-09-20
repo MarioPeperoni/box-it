@@ -1,6 +1,6 @@
 import CategoriesItem from "./CategoriesItem";
 
-import useCategories from "@/app/hooks/useCategories";
+import useCategories from "@/hooks/useCategories";
 
 const CategoriesDisplay = () => {
   const categories = useCategories();

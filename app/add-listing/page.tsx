@@ -8,11 +8,11 @@ import { twMerge } from "tailwind-merge";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-import Button from "../components/Button";
-import PhotoGrid from "./components/PhotoGrid";
-import Dropdown from "../components/form/Dropdown";
-import Input from "../components/form/Input";
-import CategoriesDropdown from "./components/CategoriesDropdown";
+import Button from "@/components/Button";
+import PhotoGrid from "@/components/add-listing/PhotoGrid";
+import Dropdown from "@/components/form/Dropdown";
+import Input from "@/components/form/Input";
+import CategoriesDropdown from "@/components/add-listing/CategoriesDropdown";
 
 const AddListing = () => {
   const router = useRouter();
@@ -152,7 +152,7 @@ const AddListing = () => {
                   )}
                 />
                 <span className="flex h-14 w-14 items-center justify-center rounded-md border-neutral-300 bg-gray-100 text-xl">
-                  €
+                  zł
                 </span>
               </div>
               <ErrorMessage
@@ -179,7 +179,7 @@ const AddListing = () => {
                   )}
                 />
                 <span className="flex h-14 w-14 items-center justify-center rounded-md border-neutral-300 bg-gray-100 text-xl">
-                  €
+                  zł
                 </span>
               </div>
               <ErrorMessage

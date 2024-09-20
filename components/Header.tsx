@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import LinkWithIcon from "@/app/components/header/LinkWithIcon";
-import CreateNewButton from "@/app/components/header/CreateNewButton";
-import ProfileButton from "@/app/components/header/ProfileButton";
+import LinkWithIcon from "@/components/header/LinkWithIcon";
+import CreateNewButton from "@/components/header/CreateNewButton";
+import ProfileButton from "@/components/header/ProfileButton";
 
-import getUser from "@/app/helpers/getUser";
+import getUser from "@/helpers/getUser";
 
 import { FiHeart } from "react-icons/fi";
 

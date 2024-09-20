@@ -1,8 +1,8 @@
-import ListingDisplay from "@/app/listings/components/ListingDisplay";
-import CategoriesDisplay from "../components/categiories/CategoriesDisplay";
-import SearchBox from "./components/SearchBox";
+import getListings from "@/helpers/getListings";
 
-import getListings from "../helpers/getListings";
+import ListingDisplay from "@/components/listings/ListingDisplay";
+import CategoriesDisplay from "@/components/categiories/CategoriesDisplay";
+import SearchBox from "@/components/SearchBox";
 
 const Home = async () => {
   const listings = await getListings();

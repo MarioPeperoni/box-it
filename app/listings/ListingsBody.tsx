@@ -6,11 +6,10 @@ import qs from "query-string";
 
 import { useRouter } from "next/navigation";
 
-import FiltersMenu from "./components/FiltersMenu";
-import CategoryBox from "./components/CategoryBox";
-import SortAndAlignToggle from "./components/SortAndAlignToggle";
-import ListingDisplay from "./components/ListingDisplay";
-import PageButtons from "./components/PageButtons";
+import CategoryBox from "@/components/listings/CategoryBox";
+import SortAndAlignToggle from "@/components/listings/SortAndAlignToggle";
+import ListingDisplay from "@/components/listings/ListingDisplay";
+import PageButtons from "@/components/listings/PageButtons";
 
 import Filters from "@/types/Filter";
 

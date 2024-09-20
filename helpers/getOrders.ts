@@ -1,4 +1,4 @@
-import prisma from "@/app/libs/prismadb";
+import prisma from "@/libs/prismadb";
 
 const getOrders = async (userId: string, includeAll = true) => {
   try {

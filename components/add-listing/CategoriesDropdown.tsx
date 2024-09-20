@@ -3,7 +3,7 @@ import { useFormikContext } from "formik";
 
 import { twMerge } from "tailwind-merge";
 
-import useCategories from "@/app/hooks/useCategories";
+import useCategories from "@/hooks/useCategories";
 
 import { MdKeyboardArrowDown, MdKeyboardArrowRight } from "react-icons/md";
 

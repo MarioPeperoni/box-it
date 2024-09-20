@@ -1,4 +1,4 @@
-import prisma from "@/app/libs/prismadb";
+import prisma from "@/libs/prismadb";
 
 const getListings = async (
   page?: string,
