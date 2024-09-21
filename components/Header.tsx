@@ -16,7 +16,13 @@ const Header = async () => {
     <header className="fixed top-0 z-50 w-full">
       <div className="flex items-center justify-around bg-neutral-50 py-2 shadow-md">
         <Link href="/">
-          <Image src={"/boxIt.svg"} alt="logo" height={128} width={128} />
+          <Image
+            src={"/boxIt.svg"}
+            alt="logo"
+            height={128}
+            width={128}
+            className=" transition hover:scale-105"
+          />
         </Link>
         <div className="flex items-center gap-3 md:gap-12">
           <div className="flex gap-5">
