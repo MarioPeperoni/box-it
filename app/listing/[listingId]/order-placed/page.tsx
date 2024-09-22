@@ -1,9 +1,9 @@
-import WebInfoBox from "@/app/components/WebInfoBox";
+import getOrder from "@/helpers/getOrder";
+
+import WebInfoBox from "@/components/WebInfoBox";
 
 import { FaBoxOpen } from "react-icons/fa";
 import { FaRotate } from "react-icons/fa6";
-
-import getOrder from "@/app/helpers/getOrder";
 
 interface Buy_SuccessParams {
   searchParams: {
@@ -27,7 +27,7 @@ const Buy_Success = async ({ searchParams }: Buy_SuccessParams) => {
           <h1 className="mb-2 text-4xl font-bold text-gray-800">
             Congratulations!
           </h1>
-          <p className=" text-lg text-gray-600">
+          <p className="text-lg text-gray-600">
             You successfully placed an order for this item.
           </p>
           <p className="text-sm text-gray-500">
@@ -42,7 +42,7 @@ const Buy_Success = async ({ searchParams }: Buy_SuccessParams) => {
           <h1 className="mb-2 text-3xl font-bold text-gray-800">
             Your order is being processed
           </h1>
-          <p className=" text-lg text-gray-600">
+          <p className="text-lg text-gray-600">
             Your order for this item is still being processed.
           </p>
           <p className="text-sm text-gray-500">
@@ -62,7 +62,7 @@ const Buy_Success = async ({ searchParams }: Buy_SuccessParams) => {
           <h1 className="mb-2 text-4xl font-bold text-gray-800">
             We&apos;re sorry!
           </h1>
-          <p className=" text-lg text-gray-600">
+          <p className="text-lg text-gray-600">
             Your order for this item has been cancelled.
           </p>
         </WebInfoBox>

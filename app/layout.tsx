@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 
-import Footer from "./(site)/components/Footer";
-import Header from "./(site)/components/Header";
+import AuthContext from "@/context/AuthContext";
 
-import "./globals.css";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+
+import "@/app/globals.css";
 
 import { Toaster } from "react-hot-toast";
-import AuthContext from "./context/AuthContext";
 
 export const metadata: Metadata = {
   title: "Box It!",
@@ -20,11 +21,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="pt-16">
+      <body className="flex flex-col pt-16">
         <AuthContext>
           <Toaster />
           <Header />
-          {children}
+          <main className="flex-grow">{children}</main>
           <Footer />
         </AuthContext>
       </body>

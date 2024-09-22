@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Form, Formik } from "formik";
 import * as yup from "yup";
@@ -7,15 +8,16 @@ import { signIn } from "next-auth/react";
 
 import toast from "react-hot-toast";
 
-import Button from "@/app/components/Button";
-import Input from "@/app/components/form/Input";
+import Button from "@/components/Button";
+import Input from "@/components/form/Input";
+import BigErrorBox from "@/components/form/BigErrorBox";
 
-import { LoginFormProps } from "../page";
-import BigErrorBox from "@/app/components/form/BigErrorBox";
+import { LoginFormProps } from "@/app/login/(variants)/VariantWapper";
 
 const RegisterForm: React.FC<LoginFormProps> = ({ changeVariant }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   const validationSchema = yup.object().shape({
     email: yup
@@ -58,7 +60,10 @@ const RegisterForm: React.FC<LoginFormProps> = ({ changeVariant }) => {
           setError("User with this email already exists");
         }
       })
-      .finally(() => setIsLoading(false));
+      .finally(() => {
+        setIsLoading(false);
+        router.refresh();
+      });
   };
   return (
     <Formik
@@ -130,6 +135,7 @@ const RegisterForm: React.FC<LoginFormProps> = ({ changeVariant }) => {
               className="text-boxit-primary transition hover:underline"
               onClick={changeVariant}
               disabled={isLoading}
+              type="button"
             >
               Sign in
             </button>
